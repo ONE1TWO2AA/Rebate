@@ -21,8 +21,8 @@ import retrofit2.Call;
 public abstract class ZPageLoadCallback<T> extends ZCallback<T> implements SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
 
     private RecyclerViewAdapter mAdapter;
-    private int page = 1;
-    private int pageSize = 20;
+    private int page = 2;
+    private int pageSize = 10;
     private boolean isLoadMore;
 
 
@@ -166,7 +166,7 @@ public abstract class ZPageLoadCallback<T> extends ZCallback<T> implements Swipe
             mSwipeRefreshLayout.setRefreshing(true);
 
         isLoadMore = false;
-        page = 1;
+        page = 2;
         requestAction(page, pageSize);
     }
 

@@ -61,7 +61,7 @@ public class SportMainActivity extends BaseActivity<ActivitySportMainBinding> {
     public void initView() {
         hideTitle();
         showContent();
-        binding.zRadiogroup.setUp(getSupportFragmentManager(), R.id.container, new FragmentLotteryMain(), new HomeFragment(), new CommunityFragment(), new MeFragment());
+        binding.zRadiogroup.setUp(getSupportFragmentManager(), R.id.container, new HomeFragment(), new FragmentLotteryMain(), new CommunityFragment(), new MeFragment());
         if (AppConfig.DBENTITY != null && AppConfig.DBENTITY.getAppTurntable() == 1 && SQLiteUtil.getBoolean(SQLiteKey.FIRST_LOGIN)) {
             GOTO.CircleTurntableActivity(this);
             SQLiteUtil.saveBoolean(SQLiteKey.FIRST_LOGIN, true);

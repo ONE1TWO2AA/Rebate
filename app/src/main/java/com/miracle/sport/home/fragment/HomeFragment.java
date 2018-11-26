@@ -92,9 +92,9 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
 
     private void initBanner() {
         images = new ArrayList<>();
-        images.add("file:///android_asset/lottery/16.jpg");
-        images.add("file:///android_asset/lottery/17.jpg");
-        images.add("file:///android_asset/lottery/18.jpg");
+        images.add("file:///android_asset/lottery/banner06.png");
+        images.add("file:///android_asset/lottery/banner07.png");
+//        images.add("file:///android_asset/lottery/18.jpg");
         binding.banner.setImages(images).setImageLoader(new ImageLoader() {
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
@@ -281,7 +281,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
             for (int i = 0; i < mNetChannels.size(); i++) {
                 String title = mNetChannels.get(i).getName();
                 String code = mNetChannels.get(i).getId()+"";
-                String pic = mNetChannels.get(i).getPic();
+                String pic = mNetChannels.get(i).getPic2();
                 mSelectedChannels.add(new Channel(title, code,pic));
             }
 

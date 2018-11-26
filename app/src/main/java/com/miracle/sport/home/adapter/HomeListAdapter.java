@@ -1,8 +1,10 @@
 package com.miracle.sport.home.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.text.TextUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.miracle.R;
@@ -31,8 +33,10 @@ public class HomeListAdapter extends RecyclerViewAdapter<Football> {
 //        } catch (ParseException e) {
 //            e.printStackTrace();
 //        }
-        helper.setText(R.id.tvTime, "");
-        helper.setText(R.id.tvAuthor,CommonUtils.getAppName(context));
+        helper.setText(R.id.tvTime, item.getAuthor());
+        ((TextView)helper.getView(R.id.tvTime)).getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG); //中划线
+//        setFlags(Paint. STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG); // 设置中划线并加清晰
+        helper.setText(R.id.tvAuthor,item.getTime());
         helper.setText(R.id.im_comment_num ,item.getComment_num()+"");
         helper.setText(R.id.im_click_num ,item.getClick_num()+"");
 //        Glide.with(context)

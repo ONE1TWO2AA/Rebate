@@ -92,14 +92,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="#8A7BEA">
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="#E0F9853F">
+                <!--android:background="@color/main_color">-->
 
                     <TextView
                         android:id="@+id/ibmyPost"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:drawableTop="@mipmap/jiemian001_07"
+                        android:drawablePadding="5dp"
                         android:gravity="center"
                         android:text="我的发帖0"
                         android:textColor="@color/white"
@@ -118,6 +123,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:drawableTop="@mipmap/jiemian001_03"
+                        android:drawablePadding="5dp"
                         android:text="我的圈子0"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
@@ -135,6 +142,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:drawableTop="@mipmap/jiemian001_05"
+                        android:drawablePadding="5dp"
                         android:text="我的收藏0"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
