@@ -37,14 +37,14 @@ public interface SportService {
      * @param pageSize 每页数量
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/tieList")
+    @POST("home/Moneyonline/tieList")
     Call<ZResponse<List<PostBean>>> getPostList(@Query("type") String type, @Query("class_id") Integer class_id, @Query("page") int page, @Query("pageSize") int pageSize);
 
     /**
      * 帖子详情
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/circleDetail")
+    @POST("home/Moneyonline/circleDetail")
     Call<ZResponse<PostDetailBean>> getPostDetail(@Query("id") int id);
 
 
@@ -53,20 +53,20 @@ public interface SportService {
      */
     @Headers({"BaseUrl:zh"})
     @Multipart
-    @POST("home/Rebate/sendTiezi")
+    @POST("home/Moneyonline/sendTiezi")
     Call<ZResponse> publishPost(@Query("class_id") int class_id, @Query("title") String title, @Query("content") String content, @Part() List<MultipartBody.Part> imgs);
 
     /**
      * 发帖
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/sendTiezi")
+    @POST("home/Moneyonline/sendTiezi")
     Call<ZResponse> publishPost(@Query("class_id") int class_id, @Query("title") String title, @Query("content") String content);
     /**
      * 帖子评论列表
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/tieziCommentList")
+    @POST("home/Moneyonline/tieziCommentList")
     Call<ZResponse<List<PostDetailBean.CommentBean>>> getPostCommentList(@Query("create_id") int id, @Query("page") int page, @Query("pageSize") int pageSize);
 
     /**
@@ -74,7 +74,7 @@ public interface SportService {
      * type 评论帖子 = 1 /评论评论 = 0
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/sendTieziComment")
+    @POST("home/Moneyonline/sendTieziComment")
     Call<ZResponse> sendPostComment(@Query("create_id") int create_id, @Query("to_user_id") int to_user_id, @Query("type") int type, @Query("content") String content);
 
 
@@ -84,14 +84,14 @@ public interface SportService {
      * @param type 1帖子，0评论
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/clickTiezi")
+    @POST("home/Moneyonline/clickTiezi")
     Call<ZResponse> likePost(@Query("create_id") int create_id, @Query("click") int click, @Query("type") int type);
 
     /**
      * 评论列表list
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/commentList")
+    @POST("home/Moneyonline/commentList")
     Call<ZResponse<List<ArticleCommentBean>>> getCommetList(@Query("id") int id, @Query("page") int page, @Query("pageSize") int pageSize);
 
 //    /**
@@ -105,7 +105,7 @@ public interface SportService {
      * 发评论
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/sendComment")
+    @POST("home/Moneyonline/sendComment")
     Call<ZResponse<ArticleCommentBean>> sendCommentCommet(@Query("create_id") int id, @Query("content") String content, @Query("to_user_id") String to_user_id, @Query("type") String type);
 
 
@@ -121,28 +121,28 @@ public interface SportService {
      * 我的发帖
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/myPost")
+    @POST("home/Moneyonline/myPost")
     Call<ZResponse<List<PostBean>>> getMyPostList(@Query("page") int page, @Query("pageSize") int pageSize);
 
     /**
      * 我的回帖
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/myReply")
+    @POST("home/Moneyonline/myReply")
     Call<ZResponse<List<HomeCommentBean>>> getReplyList();
 
     /**
      * 我的圈子
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/myCircle")
+    @POST("home/Moneyonline/myCircle")
     Call<ZResponse<List<MyCircleBean>>> getMyCircleList();
 
     /**
      * 圈子列表
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/circleType")
+    @POST("home/Moneyonline/circleType")
     Call<ZResponse<List<CircleBean>>> getCircleList();
 
     /**
@@ -150,7 +150,7 @@ public interface SportService {
      * type传"qx"取消收藏圈子
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/addSq")
+    @POST("home/Moneyonline/addSq")
     Call<ZResponse> addCircle(@Query("class_id") int class_id, @Query("type") int type);
 
 //    /**
@@ -164,14 +164,14 @@ public interface SportService {
      * 首页title 类型
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/type")
+    @POST("home/Moneyonline/type")
     Call<ZResponse<List<ChannerlKey>>> getSearchKeys();
 
     /**
      * 首页列表
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/flashList")
+    @POST("home/Moneyonline/flashList")
     Call<ZResponse<List<Football>>> getNewsList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
     //    Call<ZResponse<List<Football>>> getNewsList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
 
@@ -179,7 +179,7 @@ public interface SportService {
      * 首页列表
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/fishlist")
+    @POST("home/Moneyonline/fishlist")
     Call<ZResponse<List<Football>>> getNewsSpotrList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
     //    Call<ZResponse<List<Football>>> getNewsList(@Query("class_id") int class_id, @Query("page") int page, @Query("pageSize") int pageSize);
 
@@ -202,7 +202,7 @@ public interface SportService {
      * 列表详情
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/fishDetail")
+    @POST("home/Moneyonline/fishDetail")
     Call<ZResponse<ArticleDetailBean>> getCommentDetailSport(@Query("id") int id);
 
     /**
@@ -218,7 +218,7 @@ public interface SportService {
      * @POST("home/sport/click")
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/click")
+    @POST("home/Moneyonline/click")
     Call<ZResponse<String>> setClickClass(@Query("create_id") int create_id, @Query("click") int click, @Query("type") String type);
 
 
@@ -227,21 +227,21 @@ public interface SportService {
      * @POST("home/sport/click")
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/deleteComment")
+    @POST("home/Moneyonline/deleteComment")
     Call<ZResponse<String>> setClickDelete(@Query("id") int id, @Query("create_id") int create_id, @Query("type") String type);
 
     /**
      * 收藏接口
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/collect")
+    @POST("home/Moneyonline/collect")
     Call<ZResponse<String>> likeOrDislike(@Query("create_id") int create_id, @Query("type") String type);
 
     /**
      * 我的收藏接口
      */
     @Headers({"BaseUrl:zh"})
-    @POST("home/Rebate/myCollect")
+    @POST("home/Moneyonline/myCollect")
     Call<ZResponse<List<Football>>> getMycollections(@Query("page") int page, @Query("pageSize") int pageSize);
 
     /**

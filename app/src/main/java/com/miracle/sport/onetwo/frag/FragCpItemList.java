@@ -120,9 +120,11 @@ public class FragCpItemList extends HandleFragment<FragmentCategoryDetailBinding
             @Override
             public void requestAction(int page, int pageSize) {
 //                ZClient.getService(CPServer.class).cpList(page, pageSize, "cp", reqKey).enqueue(this);
-//                if(reqKey.equals("1")) {//只有首页展示的频道做缓存
+                if(reqKey.equals("1")) {//只有首页展示的频道做缓存
 //                    callBack.setCachKey("homepage_fcil_key");
-//                }
+                    if(page == 1)//首页从第二页开始加载
+                        page++;
+                }
 //                else {
 //                    callBack.setCachKey(null);
 //                }

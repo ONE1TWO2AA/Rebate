@@ -195,10 +195,12 @@ public class FragmentLotteryMain extends HandleFragment<FragmentCpMainTopBinding
             protected void onSuccess(ZResponse<List<ChannerlKey>> zResponse) {
                 LinearLayout main_frag_hs_ll = topBinding.getRoot().findViewById(R.id.main_frag_hs_ll);
                 main_frag_hs_ll.removeAllViews();
+                mardatas.clear();
                 for(ChannerlKey item : zResponse.getData()){
                     //排除 ‘推荐’
                     if(1 != Integer.parseInt(item.getId()))
-                        addToHS(item.getName(),Integer.parseInt(item.getId()),item.getPic2());
+                        addToHS(item.getName(),Integer.parseInt(item.getId()),item.getPic());
+                    mardatas.add(Html.fromHtml("<font color=\"#cc0000\">"+item.getName()+"</font>已更新!"));
                 }
             }
         };
@@ -231,9 +233,9 @@ public class FragmentLotteryMain extends HandleFragment<FragmentCpMainTopBinding
     }
 
     private void initMard(List<Spanned> list) {
-        mardatas.add(Html.fromHtml("<font color=\"#cc0000\">鞋包服饰</font>已更新"));
-        mardatas.add(Html.fromHtml("<font color=\"#cc0000\">文体车品</font>已更新"));
-        mardatas.add(Html.fromHtml("<font color=\"#cc0000\">数码家电</font>已更新"));
+        mardatas.add(Html.fromHtml("<font color=\"#cc0000\">最新资讯</font>已更新"));
+//        mardatas.add(Html.fromHtml("<font color=\"#cc0000\">局部塑身</font>已更新"));
+//        mardatas.add(Html.fromHtml("<font color=\"#cc0000\">中医减肥</font>已更新"));
         mardatas.addAll(list);
 
         textSwitcher = topBinding.getRoot().findViewById(R.id.cp_main_top_ts);
@@ -258,13 +260,10 @@ public class FragmentLotteryMain extends HandleFragment<FragmentCpMainTopBinding
     private void initBanner() {
         banner = topBinding.mainFarg1Banner;
         ArrayList images = new ArrayList<>();
-//        images.add(R.mipmap.banner_f2);
-//        images.add(R.mipmap.b3);
-//        images.add(R.mipmap.b5);
-//        images.add(R.mipmap.banner04);
-        images.add("file:///android_asset/lottery/banner01.png");
-        images.add("file:///android_asset/lottery/banner02.png");
-        images.add("file:///android_asset/lottery/banner03.png");
+        images.add(R.mipmap.banner_f2);
+        images.add(R.mipmap.b3);
+        images.add(R.mipmap.b5);
+        images.add(R.mipmap.banner04);
         banner.setImages(images).setImageLoader(new ImageLoader() {
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
