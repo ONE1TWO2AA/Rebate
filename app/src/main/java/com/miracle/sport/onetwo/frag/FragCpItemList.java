@@ -2,10 +2,12 @@ package com.miracle.sport.onetwo.frag;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +56,7 @@ public class FragCpItemList extends HandleFragment<FragmentCategoryDetailBinding
     public CallBackListener getCallBackListener() {
         return callBackListener;
     }
+    Rect rc = new Rect();
 
     public FragCpItemList() {
         super();
@@ -83,6 +86,20 @@ public class FragCpItemList extends HandleFragment<FragmentCategoryDetailBinding
         binding.recyclerView.setHasFixedSize(true);
         //FootNewsPostActivity
 //        binding.tvCategoryTitle.setText(R.string.main_title_1);
+        binding.recyclerView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                binding.recyclerView.getGlobalVisibleRect(rc);
+                mAdapter.resetParallaxImgView(rc);
+            }
+        });
+        binding.recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                mAdapter.resetParallaxImgView(rc);
+            }
+        });
 
         setShowBanner(showBanner);
         initCallback();

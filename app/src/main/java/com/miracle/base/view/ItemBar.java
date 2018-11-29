@@ -7,7 +7,9 @@ import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.miracle.R;
@@ -64,6 +66,25 @@ public class ItemBar extends LinearLayout {
                     break;
                 case R.styleable.ItemBar_ItemBar_TextSize:
                     binding.tvText.setTextSize(TypedValue.COMPLEX_UNIT_PX, ta.getDimension(attr, DisplayUtil.sp2px(context, 12)));
+                    break;
+                case R.styleable.ItemBar_ItemBar_Orientation:
+                    int or = ta.getInt(attr, LinearLayout.HORIZONTAL);
+                    binding.itemBarRoot.setOrientation(or);
+                    if(or == LinearLayout.VERTICAL){
+                        binding.tvIconRight.setVisibility(View.GONE);
+                        LinearLayout.LayoutParams lp = (LayoutParams) binding.tvIconLeft.getLayoutParams();
+                        lp.width = LayoutParams.WRAP_CONTENT;
+                        lp.height = LayoutParams.WRAP_CONTENT;
+                        lp.gravity = Gravity.CENTER_HORIZONTAL;
+                        lp.setMargins(8,8,8,8);
+                        binding.tvIconLeft.setLayoutParams(lp);
+                        lp = (LayoutParams) binding.tvText.getLayoutParams();
+                        lp.gravity = Gravity.CENTER_HORIZONTAL;
+                        lp.width = LayoutParams.WRAP_CONTENT;
+                        lp.height = LayoutParams.WRAP_CONTENT;
+                        lp.setMargins(8,8,8,8);
+                        binding.tvText.setLayoutParams(lp);
+                    }
                     break;
                 case R.styleable.ItemBar_ItemBar_Left_TextSize:
                     binding.tvIconLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX, ta.getDimension(attr, DisplayUtil.sp2px(context, 12)));

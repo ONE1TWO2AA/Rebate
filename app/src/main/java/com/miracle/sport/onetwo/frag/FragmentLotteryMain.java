@@ -194,12 +194,19 @@ public class FragmentLotteryMain extends HandleFragment<FragmentCpMainTopBinding
             @Override
             protected void onSuccess(ZResponse<List<ChannerlKey>> zResponse) {
                 LinearLayout main_frag_hs_ll = topBinding.getRoot().findViewById(R.id.main_frag_hs_ll);
+                LinearLayout main_frag_hs_ll3 = topBinding.getRoot().findViewById(R.id.main_frag_hs_ll3);
                 main_frag_hs_ll.removeAllViews();
                 mardatas.clear();
+                int i = 0;
                 for(ChannerlKey item : zResponse.getData()){
                     //排除 ‘推荐’
-                    if(1 != Integer.parseInt(item.getId()))
-                        addToHS(item.getName(),Integer.parseInt(item.getId()),item.getPic());
+                    if(1 != Integer.parseInt(item.getId())){
+                        if(i % 2 == 0)
+                            addToHS(item.getName(),Integer.parseInt(item.getId()),item.getPic(),main_frag_hs_ll);
+                        else
+                            addToHS(item.getName(),Integer.parseInt(item.getId()),item.getPic(),main_frag_hs_ll3);
+                        i++;
+                    }
                     mardatas.add(Html.fromHtml("<font color=\"#cc0000\">"+item.getName()+"</font>已更新!"));
                 }
             }
@@ -209,7 +216,7 @@ public class FragmentLotteryMain extends HandleFragment<FragmentCpMainTopBinding
         RequestUtil.cacheUpdate(ZClient.getService(SportService.class).getSearchKeys(), zCallback);
     }
 
-    private void addToHS(final String str, final int key, String picUrl){
+    private void addToHS(final String str, final int key, String picUrl,LinearLayout main_frag_hs_ll){
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.main_frag_hs1_item,null);
         ImageView iv = view.findViewById(R.id.main_farg_hs1_iv);
         ((TextView)view.findViewById(R.id.main_farg_hs1_tv1)).setText(str);
@@ -228,7 +235,6 @@ public class FragmentLotteryMain extends HandleFragment<FragmentCpMainTopBinding
                 startActivity(i);
             }
         });
-        LinearLayout main_frag_hs_ll = topBinding.getRoot().findViewById(R.id.main_frag_hs_ll);
         main_frag_hs_ll.addView(view);
     }
 

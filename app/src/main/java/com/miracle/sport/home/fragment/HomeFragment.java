@@ -84,7 +84,7 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
     public void initView() {
         reqData();
         initBanner();
-        List<String> textList = Arrays.asList("欢迎来到应用", "可在社区中讨论赛事相关信息", "期待您加入我们");
+        List<String> textList = Arrays.asList("欢迎来到应用", "可在社区中讨论", "期待您加入我们");
         initMard(textList);
 //        initChannelData();
 //        initChannelFragments();
@@ -93,8 +93,10 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding> implements O
 
     private void initBanner() {
         images = new ArrayList<>();
-        images.add("file:///android_asset/lottery/banner06.png");
-        images.add("file:///android_asset/lottery/banner07.png");
+        images.add("file:///android_asset/mainpage/04.png");
+        images.add("file:///android_asset/mainpage/05.png");
+//        images.add("file:///android_asset/lottery/banner06.png");
+//        images.add("file:///android_asset/lottery/banner07.png");
 //        images.add("file:///android_asset/lottery/18.jpg");
         binding.banner.setImages(images).setImageLoader(new ImageLoader() {
             @Override

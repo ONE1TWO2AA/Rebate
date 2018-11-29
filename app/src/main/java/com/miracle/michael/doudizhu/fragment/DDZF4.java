@@ -60,16 +60,15 @@ public class DDZF4 extends BaseFragment<F4Ddz2Binding> {
         binding.ibBailManage.setOnClickListener(this);
         binding.ibSettings.setOnClickListener(this);
         binding.ibGroupChat.setOnClickListener(this);
-        binding.ibCustomerService.setOnClickListener(this);
-        binding.ibShare.setOnClickListener(this);
-        binding.ibAboutUs.setOnClickListener(this);
+        binding.getRoot().findViewById(R.id.ibCustomerService).setOnClickListener(this);
+        binding.getRoot().findViewById(R.id.ibShare).setOnClickListener(this);
+        binding.getRoot().findViewById(R.id.ibAboutUs).setOnClickListener(this);
         binding.swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 reqData();
             }
         });
-
     }
 
     @Override

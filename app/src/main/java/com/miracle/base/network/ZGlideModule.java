@@ -12,5 +12,6 @@ public class ZGlideModule extends AppGlideModule {
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {
         builder.setDiskCache(new InternalCacheDiskCacheFactory(context, "glide_cache", 1000 * 1024 * 1024));
+
     }
 }
