@@ -25,6 +25,7 @@ import com.miracle.sport.onetwo.view.MImgView;
 import java.lang.ref.WeakReference;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class HomeListAdapter extends RecyclerViewAdapter<Football> {
@@ -65,13 +66,15 @@ public class HomeListAdapter extends RecyclerViewAdapter<Football> {
 
     public void resetParallaxImgView(Rect rc){
         this.rc = rc;
-        for(Map.Entry<Integer,WeakReference<MImgView>> e : allImgView.entrySet()){
+        Iterator<Map.Entry<Integer, WeakReference<MImgView>>> it = allImgView.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry<Integer,WeakReference<MImgView>> e = it.next();
             WeakReference<MImgView> pr = e.getValue();
             MImgView m = pr.get();
             if(m == null){
                 pr.clear();
 //                    Log.d("TAG", "onScrolled:  remove()");
-                allImgView.remove(e.getKey());
+                it.remove();
                 continue;
             }
             m.updateProgress(rc);
